@@ -1,5 +1,4 @@
 var mongoose = require("mongoose");
-var multer = require("multer");
 
 // Save a reference to the Schema constructor
 var Schema = mongoose.Schema;
@@ -11,6 +10,8 @@ var BookSchema = new Schema({
   author: String,
   // `title` must be of type String
   title: String,
+
+  description: String,
 
   image: { data: Buffer, contentType: String }
 });

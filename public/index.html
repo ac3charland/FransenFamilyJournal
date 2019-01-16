@@ -17,7 +17,9 @@
     <form action="/submit" method="post" enctype="multipart/form-data">
       <input type="text" name="author" placeholder="author">
       <input type="text" name="title" placeholder="title">
-      <input type='file' name='image' />
+      <input type="text" name="description" placeholder="description">
+      <input type='file' name='image' accept="image/png, image/jpeg" multiple/>
+    
       <input type="submit">
       <a href="/books">See your books!</a>
       <a href="/library">See your library!</a>
