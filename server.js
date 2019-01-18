@@ -45,33 +45,17 @@ db.Library.create({ name: "FFJ Test Library" })
 
 // POST route for saving a new Book to the db and associating it with a Library
 app.post("/submit", upload.single('image'), function(req, res, next) {
-  
-  // FOR FUTURE ALEX:
-  /*
-    I feel like I'm so freaking close.
-    The mess of console log statements below confirm several things:
-      1. Multer is handling the multipart form data correctly. req.body and req.file both return with what I'd expect.
-      2. fs.readFileSync(req.file.path) is getting some kind of data.
 
-    However, according to Robo3T my uploads are not getting stored in the DB with any image data. 
-    So the problem has to be occurring somewhere around line 72, because the text is going into the DB just fine but the image data isn't.
-  */
+  var photoData = fs.readFileSync(req.file.path);
   
-  console.log("Submitting book");
-  console.log("Here's req.body: ");
-  console.log(req.body)
-  console.log("Here's req.file:")
-  console.log(req.file)
-  console.log("Here's the file data: ")
-  console.log(fs.readFileSync(req.file.path))
   // Create a new Book in the database
   db.Book.create(
     {
       author: req.body.author,
       title: req.body.title,
       description: req.body.description,
-      img: {
-        data: fs.readFileSync(req.file.path),
+      image: {
+        data: photoData,
         contentType: req.file.mimetype
       }
     }
