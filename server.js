@@ -45,7 +45,7 @@ db.Library.create({ name: "FFJ Test Library" })
 // Routes
 
 // POST route for saving a new Book to the db and associating it with a Library
-app.post("/submit", upload.single('image'), function(req, res, next) {
+app.post("/api/submit", upload.single('image'), function(req, res, next) {
 
   var photoData = fs.readFileSync(req.file.path);
   
@@ -78,7 +78,7 @@ app.post("/submit", upload.single('image'), function(req, res, next) {
 });
 
 // Route for getting all books from the db
-app.get("/books", function(req, res) {
+app.get("/api/books", function(req, res) {
   // Using our Book model, "find" every book in our db
   db.Book.find({})
     .then(function(dbBook) {
@@ -92,7 +92,7 @@ app.get("/books", function(req, res) {
 });
 
 // Route for getting all libraries from the db
-app.get("/library", function(req, res) {
+app.get("/api/library", function(req, res) {
   // Using our Library model, "find" every library in our db
   db.Library.find({})
     .then(function(dbLibrary) {
@@ -106,7 +106,7 @@ app.get("/library", function(req, res) {
 });
 
 // Route to see what library looks like WITH populating
-app.get("/populated", function(req, res) {
+app.get("/api/populated", function(req, res) {
   // Using our Library model, "find" every library in our db and populate them with any associated books
   db.Library.find({})
     // Specify that we want to populate the retrieved libraries with any associated books
@@ -120,7 +120,7 @@ app.get("/populated", function(req, res) {
       res.json(err);
     });
 });
-app.get("/photo", function(req, res) {
+app.get("/api/photo", function(req, res) {
   db.Book.find({})
     .then(function(dbBook) {
       //Strategy for showing photos:
