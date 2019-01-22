@@ -3,7 +3,8 @@ var fs = require("fs");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var multer = require("multer");
-var upload = multer({ dest: 'uploads/' })
+var upload = multer({ dest: 'uploads/' });
+var path = require("path");
 
 var PORT = 3000;
 
@@ -118,6 +119,29 @@ app.get("/populated", function(req, res) {
       // If an error occurs, send it back to the client
       res.json(err);
     });
+});
+app.get("/photo", function(req, res) {
+  db.Book.find({})
+    .then(function(dbBook) {
+      //Strategy for showing photos:
+        // Use jQuery to get the text and data from dbBook and write to page.
+      $("#results").text(dbBook);
+      res.json(dbBook)
+    })
+    .catch(function (err) {
+      // If an error occurs, send it back to the client
+      res.json(err);
+    });
+})
+
+// index route loads view.html
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, "./public/html/index.html"));
+});
+
+// Loads test.html
+app.get("/test/", function (req, res) {
+  res.sendFile(path.join(__dirname, "./public/html/test.html"))
 });
 
 // Start the server
