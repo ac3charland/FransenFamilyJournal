@@ -1,3 +1,12 @@
+function arrayBufferToBase64(buffer) {
+    var binary = '';
+    var bytes = [].slice.call(new Uint8Array(buffer));
+
+    bytes.forEach((b) => binary += String.fromCharCode(b));
+
+    return window.btoa(binary)
+};
+
 $(document).ready(function() {
     console.log("test.js is running")
     var message = $("<h2>")
@@ -24,7 +33,8 @@ $(document).ready(function() {
 
         var imageEnclosure = $("<li>");
         var image = $("<img>");
-        var srcString = "data:" + response[0].image.contentType + ";" + response[0].image.data.data;
+        var data = arrayBufferToBase64(response[0].image.data.data)
+        var srcString = "data:" + response[0].image.contentType + ";base64," + data;
         image.attr("src", srcString);
         imageEnclosure.append(image);
 
