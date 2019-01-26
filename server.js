@@ -1,18 +1,22 @@
-var express = require("express");
-var fs = require("fs");
-var logger = require("morgan");
-var mongoose = require("mongoose");
-var multer = require("multer");
-var upload = multer({ dest: 'uploads/' });
-var path = require("path");
+const express = require("express");
+const fs = require("fs");
+const logger = require("morgan");
+const mongoose = require("mongoose");
+const multer = require("multer");
+const upload = multer({ dest: 'uploads/' });
+const path = require("path");
 
-var PORT = 3000;
+
+
+
+const PORT = 3000;
 
 // Require all models
-var db = require("./models");
+const db = require("./models");
+require("./config/passport");
 
 // Initialize Express
-var app = express();
+const app = express();
 
 // Configure middleware
 
@@ -41,13 +45,15 @@ db.Library.create({ name: "FFJ Test Library" })
     console.log(err.message);
   });
 
+  app.use(require('./routes'));
+
 
 // Routes
 
 // POST route for saving a new Book to the db and associating it with a Library
 app.post("/api/submit", upload.single('image'), function(req, res, next) {
 
-  var photoData = fs.readFileSync(req.file.path);
+  const photoData = fs.readFileSync(req.file.path);
   
   // Create a new Book in the database
   db.Book.create(
