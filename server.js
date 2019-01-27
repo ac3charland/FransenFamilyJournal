@@ -150,6 +150,11 @@ app.get("/test/", function (req, res) {
   res.sendFile(path.join(__dirname, "./public/html/test.html"))
 });
 
+// Loads login.html
+app.get("/login/", function (req, res) {
+  res.sendFile(path.join(__dirname, "./public/html/login.html"))
+});
+
 // Start the server
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");
