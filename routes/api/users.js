@@ -6,6 +6,9 @@ const Users = mongoose.model('Users');
 
 //POST new user route (optional, everyone has access)
 router.post('/', auth.optional, (req, res, next) => {
+    console.log("req:")
+    console.log(req.body)
+
     const { body: { user } } = req;
 
     if(!user.email) {

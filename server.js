@@ -25,7 +25,7 @@ app.use(logger("dev"));
 // Parse request body as JSON
 // Note: this line doesn't play well with multipart form data. Need to use multer to handle multipart forms.
 // app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
+app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
 
