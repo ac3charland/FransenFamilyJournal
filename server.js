@@ -1,12 +1,7 @@
 const express = require("express");
-const fs = require("fs");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const multer = require("multer");
-const upload = multer({ dest: 'uploads/' });
-const path = require("path");
-
-
+const path = require('path');
 
 
 const PORT = 3000;
@@ -44,6 +39,21 @@ db.Library.create({ name: "FFJ Test Library" })
     // If an error occurs, print it to the console
     console.log(err.message);
   });
+
+// index route loads view.html
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, "./public/html/index.html"));
+});
+
+// Loads test.html
+app.get("/test/", function (req, res) {
+  res.sendFile(path.join(__dirname, "./public/html/test.html"))
+});
+
+// Loads login.html
+app.get("/login/", function (req, res) {
+  res.sendFile(path.join(__dirname, "./public/html/login.html"))
+});
 
 app.use(require('./routes'));
 

@@ -5,6 +5,7 @@ const auth = require('../auth');
 const Users = mongoose.model('Users');
 const multer = require("multer");
 const upload = multer({ dest: 'uploads/' });
+const fs = require("fs");
 
 
 // POST route for saving a new Book to the db and associating it with a Library
