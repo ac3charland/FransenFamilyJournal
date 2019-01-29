@@ -27,6 +27,14 @@ router.post('/', auth.optional, (req, res, next) => {
         });
     }
 
+    if(user.password !== user.passwordCheck) {
+        return res.status(400).json({
+            errors: {
+                password: 'must match'
+            }
+        })
+    }
+
     const finalUser = new Users(user);
 
     finalUser.setPassword(user.password);
