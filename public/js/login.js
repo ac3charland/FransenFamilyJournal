@@ -16,7 +16,11 @@ $(document).ready(function() {
             console.log(response);
             $("#response").text(JSON.stringify(response));
             console.log("Saving token: " + response.user.token);
-            localStorage.setItem("ffjtoken", response.user.token);
+            // Clear the previous cookie by setting it it equal to nothing and its expiration date to a past time
+            document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+            document.cookie = "token=" + response.user.token + "; Secure; HttpOnly"
+            console.log("Printing cookies:")
+            console.log(document.cookie);
         })
 
     })
