@@ -10,6 +10,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="../js/navbar.js"></script>
     <script src="../js/login.js"></script>
 </head>
 
@@ -22,11 +23,17 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/about/">About</a>
+                <li hidden id="login-text-item" class="nav-item">
+                    <span id="login-text" class="navbar-text"></span>
+                </li>
+                <li hidden id="logout-item" class="nav-item">
+                    <a id="logout-link" class="nav-link" href="/login/">Logout</a>
+                </li>
+                <li id="login-item" class="nav-item">
+                    <a id="login-link" class="nav-link" href="/login/">Login/Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login/">Login/Register</a>
+                    <a class="nav-link" href="/about/">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/compose/">Write An Entry</a>
@@ -42,11 +49,11 @@
                 <form id="login-submit">
                     <div class="form-group">
                         <label for="loginEmail">Email address</label>
-                        <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email" required>
                     </div>
                     <div class="form-group">
                         <label for="loginPassword">Password</label>
-                        <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                        <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -56,15 +63,16 @@
                 <form id="register-submit">
                     <div class="form-group">
                         <label for="registerEmail">Email address</label>
-                        <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp" placeholder="Enter email" required>
                     </div>
                     <div class="form-group">
                         <label for="registerPassword2">Password</label>
-                        <input type="password" class="form-control" id="registerPassword1" placeholder="Password">
+                        <input type="password" class="form-control" id="registerPassword1" placeholder="Password" required>
                     </div>
                     <div class="form-group">
-                        <label for="registerPassword2">Reenter Password</label>
-                        <input type="password" class="form-control" id="registerPassword2" placeholder="Password">
+                        <label for="registerPassword2">Confirm Password</label>
+                        <input type="password" class="form-control" id="registerPassword2" placeholder="Confirm password" aria-describedby="confirmPasswordHelp" required>
+                        <small id="confirmPasswordHelp" class="form-text text-muted"></small>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
