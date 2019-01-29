@@ -2,6 +2,7 @@ const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const path = require('path');
+const auth = require("./routes/auth");
 
 
 const PORT = 3000;
@@ -55,7 +56,7 @@ app.get("/test/", function (req, res) {
 });
 
 // Loads compose.html
-app.get("/compose", function (req, res) {
+app.get("/compose", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/html/compose.html"));
 })
 
