@@ -29,3 +29,11 @@
 #results {
     margin-bottom: 75px;
 }
+
+.max-lines {
+  display: inline-block;
+  word-wrap: break-word;
+  overflow: hidden;
+  height: 5.4em;
+  line-height: 1.8em;
+}

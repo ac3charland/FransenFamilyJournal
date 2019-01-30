@@ -35,19 +35,20 @@ function createEntryTile(entry) {
 
     let body = $("<p>");
     let fullBodyText = entry.body;
-    let sampleBodyText;
-    if (fullBodyText.length > 200) {
-        body.addClass("full-height");
-        sampleBodyText = fullBodyText.substring(0, 200) + "(...)";
-    } else {
-        const fullHeight = $(".full-height").first().height();
-        console.log("fullHeight=" + fullHeight);
-        body.addClass("partial-height");
-        body.css("height", fullHeight);
-        sampleBodyText = fullBodyText;
-    }
+    // let sampleBodyText;
+    // if (fullBodyText.length > 250) {
+    //     body.addClass("full-height");
+    //     sampleBodyText = fullBodyText.substring(0, 250) + "(...)";
+    // } else {
+    //     const fullHeight = $(".full-height").first().height();
+    //     console.log("fullHeight=" + fullHeight);
+    //     body.addClass("partial-height");
+    //     body.css("height", fullHeight);
+    //     sampleBodyText = fullBodyText;
+    // }
     
-    body.text(sampleBodyText);
+    body.text(fullBodyText);
+    body.addClass("max-lines");
     entryHtml.append(body);
     
     entryWrapper.append(entryHtml);
