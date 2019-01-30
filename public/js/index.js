@@ -37,8 +37,13 @@ function createEntryTile(entry) {
     let fullBodyText = entry.body;
     let sampleBodyText;
     if (fullBodyText.length > 200) {
+        body.addClass("full-height");
         sampleBodyText = fullBodyText.substring(0, 200) + "(...)";
     } else {
+        const fullHeight = $(".full-height").first().height();
+        console.log("fullHeight=" + fullHeight);
+        body.addClass("partial-height");
+        body.css("height", fullHeight);
         sampleBodyText = fullBodyText;
     }
     
@@ -46,27 +51,30 @@ function createEntryTile(entry) {
     entryHtml.append(body);
     
     entryWrapper.append(entryHtml);
-
-    console.log("Returning the following entry:")
-    console.log(entryWrapper);
     return entryWrapper;
 }
 
 $(document).ready(function() {
+    $(window).resize(function() {
+        let shortParagraphs = $(".partial-height");
+        console.log(shortParagraphs)
+        shortParagraphs.map(body => {
+            const fullHeight = $(".full-height").first().height();
+            console.log("Setting height to " + fullHeight);
+            body.css("height", fullHeight);
+        });
+    })
+
     $.get("/api/entry/")
     .then(function(response) {
-        console.log("Here's the .then response from /api/entry/:");
-        console.log(response);
 
         let entriesAdded = 0;
 
         response.map(dbEntry => {
-            console.log("Adding the following entry to the DOM:");
-            console.log(dbEntry);
             if (entriesAdded % 2 === 0) {
-                console.log("Even entry")
                 let row = $("<div>");
-                const rowNumber = entriesAdded % 2;
+                const rowNumber = Math.floor(entriesAdded / 2);
+
                 row.attr("id", "row" + rowNumber);
                 row.addClass("row");
                 row.addClass("mb-4");
@@ -76,15 +84,11 @@ $(document).ready(function() {
                 column.addClass("col-md-6");
 
                 let domEntry = createEntryTile(dbEntry);
-                console.log("Here's the output of createEntryTile():");
-                console.log(domEntry);
                 column.append(domEntry);
                 row.append(column);
                 $("#results").append(row);
             } else {
-                console.log("Odd entry")
-                console.log("entriesAdded=" + entriesAdded)
-                const rowNumber = entriesAdded - 1;
+                const rowNumber = Math.floor(entriesAdded / 2);
 
                 let column = $("<div>");
                 column.attr("id", "entry" + entriesAdded);

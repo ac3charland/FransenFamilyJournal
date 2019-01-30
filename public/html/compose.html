@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="../js/navbar.js"></script>
+    <script src="../js/compose.js"></script>
 </head>
 
 <body>
@@ -43,7 +44,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
-                <form action="/api/entry/submit" method="post" enctype="multipart/form-data">
+                <form id="entry-submit" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <h3 for="title">Title</h3>
                         <input type="text" class="form-control" name="title" id="title" placeholder="e.g. Our Year in 2018">
@@ -54,12 +55,12 @@
                     </div>
                     <div class="form-group">
                         <h3 for="exampleFormControlTextarea1">Entry</h3>
-                        <textarea class="form-control" name="body" id="formControlTextarea" rows="8"></textarea>
+                        <textarea class="form-control" name="body" id="body" rows="8"></textarea>
                     </div>
                     <div class="form-group">
                         <h3 for="picture">Picture</h3>
                         <label for="picture">JPEG and PNG image formats accepted.</label>
-                        <input type="file" class="form-control-file" name="image" id="picture" accept="image/png, image/jpeg">
+                        <input type="file" class="form-control-file" name="image" id="image" accept="image/png, image/jpeg">
                     </div>
                     <div class="form-group">
                         <input type="submit">
