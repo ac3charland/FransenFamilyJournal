@@ -3,6 +3,8 @@ $(document).ready(function() {
     $("#entry-submit").submit(function (event) {
         event.preventDefault();
         var formData = new FormData(this);
+
+        $("#loading").attr("hidden", false);
         
         console.log("formData:")
         console.log(formData);
