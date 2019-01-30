@@ -84,6 +84,8 @@ $(document).ready(function() {
             entriesAdded++;
         })
 
+        $("#loading").attr('hidden', true);
+
         $(".entry").on("click", function() {
             console.log(this.id);
             location = "/entry/" + this.id;

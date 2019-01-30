@@ -5,7 +5,7 @@ const path = require('path');
 const auth = require("./routes/auth");
 
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Require all models
 const db = require("./models");
@@ -27,19 +27,8 @@ app.use(express.static("public"));
 
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/FransenFamilyJournalDB", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/FransenFamilyJournalDB", { useNewUrlParser: true});
 
-// When the server starts, create and save a new Library document to the db
-// The "unique" rule in the Library model's schema will prevent duplicate libraries from being added to the server
-db.Library.create({ name: "FFJ Test Library" })
-  .then(function(dbLibrary) {
-    // If saved successfully, print the new Library document to the console
-    console.log(dbLibrary);
-  })
-  .catch(function(err) {
-    // If an error occurs, print it to the console
-    console.log(err.message);
-  });
 
 // index route loads index.html
 app.get("/", function (req, res) {

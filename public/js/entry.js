@@ -35,7 +35,8 @@ $(document).ready(function() {
             $("#entry-content").prepend(image);
         }
         
-
+        $("#loading").attr("hidden", true);
+        $("#back").attr("hidden", false);
     })
 
 })
