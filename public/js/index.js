@@ -9,20 +9,25 @@ function arrayBufferToBase64(buffer) {
 
 function createEntryTile(entry) {
     let entryHtml = $("<div>");
+    entryHtml.addClass("entry");
 
     let image = $("<img>");
     let data = arrayBufferToBase64(entry.image.data.data);
     let srcString = "data:" + entry.image.contentType + ";base64," + data;
     image.attr("src", srcString);
+    image.addClass("entry-image");
+    image.addClass("img-fluid");
+    image.addClass("mx-auto d-block");
+    image.addClass("mb-2");
     entryHtml.append(image);
+
+    let author = $("<h4>");
+    author.text(entry.author);
+    entryHtml.append(author);
 
     let title = $("<h2>");
     title.text(entry.title);
     entryHtml.append(title);
-
-    let author = $("<h4>");
-    author.text("By " + entry.author);
-    entryHtml.append(author);
 
     let body = $("<p>");
     let fullBodyText = entry.body;
@@ -64,25 +69,27 @@ $(document).ready(function() {
                 let column = $("<div>");
                 column.attr("id", "entry" + entriesAdded);
                 column.addClass("col-md-6");
+                column.addClass("d-flex align-items-end");
 
                 let domEntry = createEntryTile(dbEntry);
                 console.log("Here's the output of createEntryTile():");
                 console.log(domEntry);
                 column.append(domEntry);
                 row.append(column);
-                $("#results").append(column);
+                $("#results").append(row);
             } else {
-                const rowNumber = entriesAdded % 2;
-                const rowId = "#row" + rowNumber;
-                let row = $(rowId);
+                console.log("Odd entry")
+                console.log("entriesAdded=" + entriesAdded)
+                const rowNumber = entriesAdded - 1;
 
                 let column = $("<div>");
                 column.attr("id", "entry" + entriesAdded);
                 column.addClass("col-md-6");
+                column.addClass("d-flex align-items-end");
 
-                let domEntry = createEntryTile(entry);
+                let domEntry = createEntryTile(dbEntry);
                 column.append(domEntry);
-                row.append(column);
+                $("#row" + rowNumber).append(column);
             }
             entriesAdded++;
         })
