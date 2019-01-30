@@ -8,8 +8,12 @@ function arrayBufferToBase64(buffer) {
 };
 
 function createEntryTile(entry) {
+    let entryWrapper = $("<div>");
+    entryWrapper.addClass("entry");
+    entryWrapper.addClass("d-flex align-items-end");
+    
     let entryHtml = $("<div>");
-    entryHtml.addClass("mb-5");
+    entryHtml.addClass("p-3");
 
     let image = $("<img>");
     let data = arrayBufferToBase64(entry.image.data.data);
@@ -40,12 +44,12 @@ function createEntryTile(entry) {
     
     body.text(sampleBodyText);
     entryHtml.append(body);
-    // Formatting body display:
-    // https://stackoverflow.com/questions/15612747/show-first-3-lines-in-html-paragraph
+    
+    entryWrapper.append(entryHtml);
 
     console.log("Returning the following entry:")
-    console.log(entryHtml);
-    return entryHtml;
+    console.log(entryWrapper);
+    return entryWrapper;
 }
 
 $(document).ready(function() {
@@ -65,11 +69,11 @@ $(document).ready(function() {
                 const rowNumber = entriesAdded % 2;
                 row.attr("id", "row" + rowNumber);
                 row.addClass("row");
+                row.addClass("mb-4");
 
                 let column = $("<div>");
                 column.attr("id", "entry" + entriesAdded);
                 column.addClass("col-md-6");
-                column.addClass("d-flex align-items-end");
 
                 let domEntry = createEntryTile(dbEntry);
                 console.log("Here's the output of createEntryTile():");
@@ -85,7 +89,6 @@ $(document).ready(function() {
                 let column = $("<div>");
                 column.attr("id", "entry" + entriesAdded);
                 column.addClass("col-md-6");
-                column.addClass("d-flex align-items-end");
 
                 let domEntry = createEntryTile(dbEntry);
                 column.append(domEntry);
