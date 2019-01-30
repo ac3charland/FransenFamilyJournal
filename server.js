@@ -46,6 +46,10 @@ app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "./public/html/index.html"));
 });
 
+app.get("/entry/:id", function (req, res) {
+  res.sendFile(path.join(__dirname, "./public/html/entry.html"));
+});
+
 app.get("/about/", function (req, res) {
   res.sendFile(path.join(__dirname, "./public/html/about.html"));
 })

@@ -11,15 +11,17 @@ function createEntryTile(entry) {
     let entryWrapper = $("<div>");
     entryWrapper.addClass("entry");
     entryWrapper.addClass("d-flex align-items-end");
+    entryWrapper.attr("id", entry._id);
     
     let entryHtml = $("<div>");
-    entryHtml.addClass("p-3");
+    entryHtml.addClass("p-3 mx-auto");
+    
 
     let image = $("<img>");
     let data = arrayBufferToBase64(entry.image.data.data);
     let srcString = "data:" + entry.image.contentType + ";base64," + data;
     image.attr("src", srcString);
-    image.addClass("entry-image");
+    image.addClass("entry-img multi-entry-img");
     image.addClass("img-fluid");
     image.addClass("mx-auto d-block");
     image.addClass("mb-2");
@@ -35,18 +37,6 @@ function createEntryTile(entry) {
 
     let body = $("<p>");
     let fullBodyText = entry.body;
-    // let sampleBodyText;
-    // if (fullBodyText.length > 250) {
-    //     body.addClass("full-height");
-    //     sampleBodyText = fullBodyText.substring(0, 250) + "(...)";
-    // } else {
-    //     const fullHeight = $(".full-height").first().height();
-    //     console.log("fullHeight=" + fullHeight);
-    //     body.addClass("partial-height");
-    //     body.css("height", fullHeight);
-    //     sampleBodyText = fullBodyText;
-    // }
-    
     body.text(fullBodyText);
     body.addClass("max-lines");
     entryHtml.append(body);
@@ -56,15 +46,6 @@ function createEntryTile(entry) {
 }
 
 $(document).ready(function() {
-    $(window).resize(function() {
-        let shortParagraphs = $(".partial-height");
-        console.log(shortParagraphs)
-        shortParagraphs.map(body => {
-            const fullHeight = $(".full-height").first().height();
-            console.log("Setting height to " + fullHeight);
-            body.css("height", fullHeight);
-        });
-    })
 
     $.get("/api/entry/")
     .then(function(response) {
@@ -100,6 +81,11 @@ $(document).ready(function() {
                 $("#row" + rowNumber).append(column);
             }
             entriesAdded++;
+        })
+
+        $(".entry").on("click", function() {
+            console.log(this.id);
+            location = "/entry/" + this.id;
         })
     })
 })

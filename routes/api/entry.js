@@ -63,4 +63,17 @@ router.get("/", function (req, res) {
         });
 });
 
+router.get("/:id", function (req, res) {
+    let id = req.params.id;
+
+    db.Entry.findById(id)
+        .then((entry) => {
+            if(!entry) {
+                return res.sendStatus(400);
+            }
+
+        return res.json(entry);
+        })
+})
+
 module.exports = router;

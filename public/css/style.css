@@ -10,19 +10,27 @@
     border-top: 4px solid #3F62C7;
 }
 
-.entry-image {
+.entry-img {
+    box-shadow: 0 5px 16px 0 rgba(0, 0, 0, 0.2), 0 5px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.multi-entry-img {
     max-height: 300px;
+}
+
+.single-entry-img {
+    max-width: 40%;
 }
 
 .entry {
     height: 100%;
-    -webkit-transition: background-color 0.35s; /* For Safari 3.1 to 6.0 */
-    transition: background-color 0.35s;
+    border-radius: 1em;
+    -webkit-transition: background-color 0.4s; /* For Safari 3.1 to 6.0 */
+    transition: background-color 0.4s;
 }
 
 .entry:hover {
     background-color: antiquewhite;
-    border-radius: 1em;
     cursor: pointer;
 }
 
