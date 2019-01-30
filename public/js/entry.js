@@ -22,10 +22,19 @@ $(document).ready(function() {
         $("#author").text(response.author);
         $("#body").text(response.body);
 
-        // Display image to DOM
-        const data = arrayBufferToBase64(response.image.data.data);
-        const srcString = "data:" + response.image.contentType + ";base64," + data;
-        $("#image").attr("src", srcString);
+        // If post had an image, display image to DOM
+        if (response.image) {
+            console.log(response.image);
+            let image = $("<img>");
+            const data = arrayBufferToBase64(response.image.data.data);
+            const srcString = "data:" + response.image.contentType + ";base64," + data;
+            image.attr("src", srcString);
+            image.addClass("single-entry-img entry-img");
+            image.addClass("img-fluid");
+            image.addClass("float-left mt-2 mr-4 mb-4");
+            $("#entry-content").prepend(image);
+        }
+        
 
     })
 

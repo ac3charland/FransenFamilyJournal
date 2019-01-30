@@ -24,8 +24,13 @@ router.post("/submit", upload.single('image'), function (req, res, next) {
 
     //         uploadUser = user;
     //     });
-
-    const photoData = fs.readFileSync(req.file.path);
+    let image;
+    if (req.file) {
+        image = {
+            data: fs.readFileSync(req.file.path),
+            contentType: req.file.mimetype
+        }
+    }
 
     // Create a new Book in the database
     db.Entry.create(
@@ -34,10 +39,7 @@ router.post("/submit", upload.single('image'), function (req, res, next) {
             author: req.body.author,
             title: req.body.title,
             body: req.body.body,
-            image: {
-                data: photoData,
-                contentType: req.file.mimetype
-            }
+            image: image
         }
     )
         .then(function(dbEntry) {

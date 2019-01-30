@@ -16,16 +16,17 @@ function createEntryTile(entry) {
     let entryHtml = $("<div>");
     entryHtml.addClass("p-3 mx-auto");
     
-
-    let image = $("<img>");
-    let data = arrayBufferToBase64(entry.image.data.data);
-    let srcString = "data:" + entry.image.contentType + ";base64," + data;
-    image.attr("src", srcString);
-    image.addClass("entry-img multi-entry-img");
-    image.addClass("img-fluid");
-    image.addClass("mx-auto d-block");
-    image.addClass("mb-2");
-    entryHtml.append(image);
+    if (entry.image) {
+        let image = $("<img>");
+        let data = arrayBufferToBase64(entry.image.data.data);
+        let srcString = "data:" + entry.image.contentType + ";base64," + data;
+        image.attr("src", srcString);
+        image.addClass("entry-img multi-entry-img");
+        image.addClass("img-fluid");
+        image.addClass("mx-auto d-block");
+        image.addClass("mb-2");
+        entryHtml.append(image);
+    }
 
     let author = $("<h4>");
     author.text(entry.author);

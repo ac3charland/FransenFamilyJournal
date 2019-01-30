@@ -17,7 +17,12 @@ var EntrySchema = new Schema({
 
     body: String,
 
-    image: { data: Buffer, contentType: String }
+    image: { data: Buffer, contentType: String },
+
+    timeStamp: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 // This creates our model from the above schema, using mongoose's model method
