@@ -9,7 +9,7 @@ function arrayBufferToBase64(buffer) {
 
 function createEntryTile(entry) {
     let entryHtml = $("<div>");
-    entryHtml.addClass("entry");
+    entryHtml.addClass("mb-5");
 
     let image = $("<img>");
     let data = arrayBufferToBase64(entry.image.data.data);
