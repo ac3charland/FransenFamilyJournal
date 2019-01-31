@@ -45,3 +45,7 @@
   height: 5.4em;
   line-height: 1.8em;
 }
+
+#body {
+    white-space: pre-wrap;
+}
