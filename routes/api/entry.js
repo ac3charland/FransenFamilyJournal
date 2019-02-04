@@ -35,7 +35,7 @@ router.post("/submit", upload.single('image'), function (req, res, next) {
     // Create a new Book in the database
     db.Entry.create(
         {
-            user_id: null,
+            user_id: req.body.user_id,
             author: req.body.author,
             title: req.body.title,
             body: req.body.body,
