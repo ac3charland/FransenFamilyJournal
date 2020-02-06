@@ -27,6 +27,7 @@ app.use(express.static("public"));
 
 
 // Connect to the Mongo DB
+console.log('process.env.MONGODB_URI', process.env.MONGODB_URI)
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/FransenFamilyJournalDB", { useNewUrlParser: true});
 
 

@@ -77,7 +77,6 @@ $(document).ready(function() {
 
     // Add a cookie that tells the site that the user has visited.
    document.cookie = "visited=true";
-   console.log(document.cookie);
 
 
     $.get("/api/entry/")
@@ -86,37 +85,11 @@ $(document).ready(function() {
         let entriesAdded = 0;
 
         response.map(dbEntry => {
-            if (entriesAdded % 2 === 0) {
-                let row = $("<div>");
-                const rowNumber = Math.floor(entriesAdded / 2);
-
-                row.attr("id", "row" + rowNumber);
-                row.addClass("row");
-                row.addClass("mb-4");
-
-                let column = $("<div>");
-                column.attr("id", "entry" + entriesAdded);
-                column.addClass("col-md-6");
-
-                let domEntry = createEntryTile(dbEntry);
-                column.append(domEntry);
-                row.append(column);
-                $("#results").append(row);
-            } else {
-                const rowNumber = Math.floor(entriesAdded / 2);
-
-                let column = $("<div>");
-                column.attr("id", "entry" + entriesAdded);
-                column.addClass("col-md-6");
-
-                let domEntry = createEntryTile(dbEntry);
-                column.append(domEntry);
-                $("#row" + rowNumber).append(column);
-            }
-            entriesAdded++;
+            let domEntry = createEntryTile(dbEntry);
+            $("#results").append(domEntry)
         })
 
-        $("#loading").attr('hidden', true);
+        $("#loading").css('display', 'none');
 
         $(".entry").on("click", function() {
             console.log(this.id);

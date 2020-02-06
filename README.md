@@ -15,5 +15,11 @@ The Fransen Family Journal is a full-stack application that utilizes several tec
 * jQuery frontend rendering
 * Bootstrap frontend styling
 
+## Development
+
+### Starting the App Locally
+1. Run `mongod` from the project root directory
+2. In a seperate terminal tab, run `node server.js`
+
 
 Built by Alex Charland ([ac3charland](https://github.com/ac3charland))

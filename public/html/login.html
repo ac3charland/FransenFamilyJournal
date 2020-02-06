@@ -38,6 +38,9 @@
                 <li hidden id="logout-item" class="nav-item">
                     <a id="logout-link" class="nav-link" href="/login/">Logout</a>
                 </li>
+                <li id="help-item" class="nav-item">
+                    <a id="help-link" class="nav-link" href="javascript:void(0);">Help</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -91,6 +94,86 @@
     <div class="navbar fixed-bottom footer">
         <p class="mx-auto">©2019 <a href="http://ac3charland.github.io/Bootstrap-Portfolio/">Alex Charland</a></p>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle">Welcome to the Fransen Family Journal!</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <h5>First, a few tips & tricks on how to use the site:</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <img src="../images/BrowseStories.gif" class="img-fluid">
+                            </div>
+                            <div class="col-md-7">
+                                <h6>Browse stories.</h6>
+                                <p>
+                                    Click on any story on the home page to view it in its entirety.
+                                </p>
+                                <p>
+                                    To return to the home page, you can click the back button at the top of each entry or
+                                    the "Fransen Family Journal" link at the top of the page anywhere on the site.
+                                </p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-5">
+                                <img src="../images/Register.gif" class="img-fluid">
+                            </div>
+                            <div class="col-md-7">
+                                <h6>Register to write entries.</h6>
+                                <p>In order to submit entries to the journal, you need to register. Thankfully, registering
+                                    is easy!</p>
+                                <p>At the top of the page, click on the <a href="/login/">Login/Register link</a> and enter
+                                    your email and desired password in the "Register" form.</p>
+                                <p>When you come back to the site, you can log back in using the "Log In" form on the same
+                                    page.</p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-5">
+                                <img src="../images/WriteAnEntry.gif" class="img-fluid">
+                            </div>
+                            <div class="col-md-7">
+                                <h6>Write an entry using our simple form.</h6>
+                                <p>To write your entry, click the "Write An Entry" link at the top of the page.</p>
+                                <p>Then, fill out your name, the title of your entry, the text of your entry, and attach an
+                                    optional picture.</p>
+                                <p>You can add line/paragraph breaks in the text editor by hitting the ENTER key, and they
+                                    will be displayed on the website when you submit.</p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h5>If you have any questions or issues while using the site, feel free to <a
+                                        href="mailto:ac3charland@gmail.com">email Alex</a> and he'll be happy to help.
+                                    Enjoy!</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Got it!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"

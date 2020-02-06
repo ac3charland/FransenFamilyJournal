@@ -20,6 +20,10 @@ $(document).ready(function() {
         localStorage.removeItem("ffj");
     })
 
+    $('#help-link').click(function () {
+        $("#welcome-modal").modal();
+    })
+
     $("#compose-link").click(function(event) {
         $.ajax({
             url: "/compose/",

@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Fransen Family Journal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script src="../js/navbar.js"></script>
@@ -16,8 +16,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
         <a class="navbar-brand" href="/">Fransen Family Journal</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -37,13 +37,19 @@
                 <li hidden id="logout-item" class="nav-item">
                     <a id="logout-link" class="nav-link" href="/login/">Logout</a>
                 </li>
+                <li id="help-item" class="nav-item">
+                    <a id="help-link" class="nav-link" href="javascript:void(0);">Help</a>
+                </li>
             </ul>
         </div>
     </nav>
     <div class="container mt-3">
         <div class="row mb-3">
-            <div class="col-md-12">
-                <a class="btn btn-secondary" href="/">&#8249; Back</a>
+            <div class="col-md-12 flex">
+                <div class="btn-wrapper">
+                    <a class="btn btn-secondary" href="/">&#8249; Back</a>
+                </div>
+                <h1>About</h1>
             </div>
         </div>
         <div class="row">
@@ -57,17 +63,22 @@
             </div>
             <div class="col-md-8">
                 <p>
-                    For years, the descendants of Nicholas and Tina Fransen have kept in touch via a yearly email newsletter. Now, it’s
+                    For years, the descendants of Nicholas and Tina Fransen have kept in touch via a yearly email
+                    newsletter. Now, it’s
                     time to carry that tradition into the 21st century with a dedicated website for the journal.
                 </p>
                 <p>
-                    Adding your entry to the journal is easy: first, log in or register. Then, click on "Write An Entry" in the navbar. Then, create and submit your entry using the site's simple form.
+                    Adding your entry to the journal is easy: first, log in or register. Then, click on "Write An Entry"
+                    in the navbar. Then, create and submit your entry using the site's simple form.
                 </p>
                 <p>
-                    This site was built by Alex Fransen Charland, son of Tom Charland and Charlotte Fransen and grandson of Herb and
+                    This site was built by Alex Fransen Charland, son of Tom Charland and Charlotte Fransen and grandson
+                    of Herb and
                     Mary
-                    Fransen. Features and performance improvements will be continually added to the site in the coming months—if you have any ideas for additions
-                    you’d like to see, feel free to <a href="mailto:ac3charland@gmail.com">email Alex</a>. You should also <a href="mailto:ac3charland@gmail.com">email
+                    Fransen. Features and performance improvements will be continually added to the site in the coming
+                    months—if you have any ideas for additions
+                    you’d like to see, feel free to <a href="mailto:ac3charland@gmail.com">email Alex</a>. You should
+                    also <a href="mailto:ac3charland@gmail.com">email
                         him</a> if you encounter any issues while using the site
                     so they can be promptly fixed!
                 </p>
@@ -78,13 +89,94 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="welcome-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLongTitle">Welcome to the Fransen Family Journal!</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <h5>First, a few tips & tricks on how to use the site:</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <img src="../images/BrowseStories.gif" class="img-fluid">
+                            </div>
+                            <div class="col-md-7">
+                                <h6>Browse stories.</h6>
+                                <p>
+                                    Click on any story on the home page to view it in its entirety.
+                                </p>
+                                <p>
+                                    To return to the home page, you can click the back button at the top of each entry or
+                                    the "Fransen Family Journal" link at the top of the page anywhere on the site.
+                                </p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-5">
+                                <img src="../images/Register.gif" class="img-fluid">
+                            </div>
+                            <div class="col-md-7">
+                                <h6>Register to write entries.</h6>
+                                <p>In order to submit entries to the journal, you need to register. Thankfully, registering
+                                    is easy!</p>
+                                <p>At the top of the page, click on the <a href="/login/">Login/Register link</a> and enter
+                                    your email and desired password in the "Register" form.</p>
+                                <p>When you come back to the site, you can log back in using the "Log In" form on the same
+                                    page.</p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-5">
+                                <img src="../images/WriteAnEntry.gif" class="img-fluid">
+                            </div>
+                            <div class="col-md-7">
+                                <h6>Write an entry using our simple form.</h6>
+                                <p>To write your entry, click the "Write An Entry" link at the top of the page.</p>
+                                <p>Then, fill out your name, the title of your entry, the text of your entry, and attach an
+                                    optional picture.</p>
+                                <p>You can add line/paragraph breaks in the text editor by hitting the ENTER key, and they
+                                    will be displayed on the website when you submit.</p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <h5>If you have any questions or issues while using the site, feel free to <a
+                                        href="mailto:ac3charland@gmail.com">email Alex</a> and he'll be happy to help.
+                                    Enjoy!</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Got it!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <div class="navbar fixed-bottom footer">
         <p class="mx-auto">©2019 <a href="http://alexcharland.com">Alex Charland</a></p>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
 </body>
 
