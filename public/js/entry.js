@@ -9,22 +9,23 @@ function arrayBufferToBase64(buffer) {
 
 $(document).ready(function() {
     const id = window.location.pathname.substr(7)
-    
-    console.log("id: " + id);
 
     $.get("/api/entry/" + id)
     .then(function(response) {
-        console.log("Here's the response from '/api/entry/" + id );
-        console.log(response);
 
         // Write text to DOM
         $("#title").text(response.title);
         $("#author").text(response.author);
         $("#body").text(response.body);
+        let components = response.timeStamp.split("T")[0].split('-');
+        let year = parseInt(components[0], 10);
+        let month = parseInt(components[1], 10);
+        let day = parseInt(components[2], 10);
+        let dateString = 'Submitted ' + month + '/' + day + '/' + year
+        $("#date").text(dateString)
 
         // If post had an image, display image to DOM
         if (response.image) {
-            console.log(response.image);
             let image = $("<img>");
             const data = arrayBufferToBase64(response.image.data.data);
             const srcString = "data:" + response.image.contentType + ";base64," + data;

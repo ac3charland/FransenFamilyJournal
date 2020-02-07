@@ -12,18 +12,6 @@ const db = require("../../models");
 
 // POST route for saving a new Entry to the db and associating it with a Library
 router.post("/submit", upload.single('image'), function (req, res, next) {
-    console.log("Submitting post. Here's the req:");
-    console.log(req.body);
-
-
-    // db.Users.findById(id)
-    //     .then((user) => {
-    //         if (!user) {
-    //             return res.sendStatus(400);
-    //         }
-
-    //         uploadUser = user;
-    //     });
     let image;
     if (req.file) {
         image = {
