@@ -25,10 +25,10 @@ function createEntryTile(entry) {
     entryWrapper.addClass("entry");
     entryWrapper.addClass("d-flex align-items-end");
     entryWrapper.attr("id", entry._id);
-    
+
     let entryHtml = $("<div>");
     entryHtml.addClass("p-3 mx-auto");
-    
+
     if (entry.image) {
         let image = $("<img>");
         let data = arrayBufferToBase64(entry.image.data.data);
@@ -49,17 +49,26 @@ function createEntryTile(entry) {
     title.text(entry.title);
     entryHtml.append(title);
 
+    let components = entry.timeStamp.split("T")[0].split('-');
+    let year = parseInt(components[0], 10);
+    let month = parseInt(components[1], 10);
+    let day = parseInt(components[2], 10);
+    let dateString = 'Submitted ' + month + '/' + day + '/' + year
+    let date = $("<h5>");
+    date.text(dateString);
+    entryHtml.append(date);
+
     let body = $("<p>");
     let fullBodyText = entry.body;
     body.text(fullBodyText);
     body.addClass("max-lines");
     entryHtml.append(body);
-    
+
     entryWrapper.append(entryHtml);
     return entryWrapper;
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     // Modal code goes here first
 
@@ -69,31 +78,23 @@ $(document).ready(function() {
     */
     var visited = readCookie("visited");
     if (!visited) {
-        console.log("Page has not been visited!");
         $("#welcome-modal").modal();
-    } else {
-        console.log("Page has been visited.")
     }
 
     // Add a cookie that tells the site that the user has visited.
-   document.cookie = "visited=true";
-
+    document.cookie = "visited=true";
 
     $.get("/api/entry/")
-    .then(function(response) {
+        .then(function (response) {
+            response.map(dbEntry => {
+                let domEntry = createEntryTile(dbEntry);
+                $("#results").append(domEntry)
+            })
 
-        let entriesAdded = 0;
+            $("#loading").css('display', 'none');
 
-        response.map(dbEntry => {
-            let domEntry = createEntryTile(dbEntry);
-            $("#results").append(domEntry)
+            $(".entry").on("click", function () {
+                location = "/entry/" + this.id;
+            })
         })
-
-        $("#loading").css('display', 'none');
-
-        $(".entry").on("click", function() {
-            console.log(this.id);
-            location = "/entry/" + this.id;
-        })
-    })
 })
