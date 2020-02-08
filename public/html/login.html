@@ -48,7 +48,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6">
-                <h3>Login</h3>
+                <h3>Already Registered? Log In:</h3>
                 <form id="login-submit">
                     <div class="form-group">
                         <label for="loginEmail">Email address</label>
@@ -60,9 +60,10 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+                <div id="login-error" hidden>Your password was incorrect. Please try again.</div>
             </div>
             <div class="col-md-6">
-                <h3>Register</h3>
+                <h3>New User? Register:</h3>
                 <form id="register-submit">
                     <div class="form-group">
                         <label for="registerEmail">Email address</label>
@@ -81,18 +82,11 @@
                 </form>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div id="response">
-
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Footer -->
     <div class="navbar fixed-bottom footer">
-        <p class="mx-auto">©2019 <a href="http://ac3charland.github.io/Bootstrap-Portfolio/">Alex Charland</a></p>
+        <p class="mx-auto">©2020 <a href="http://ac3charland.github.io/Bootstrap-Portfolio/">Alex Charland</a></p>
     </div>
 
     <!-- Modal -->
@@ -151,10 +145,9 @@
                             <div class="col-md-7">
                                 <h6>Write an entry using our simple form.</h6>
                                 <p>To write your entry, click the "Write An Entry" link at the top of the page.</p>
-                                <p>Then, fill out your name, the title of your entry, the text of your entry, and attach an
-                                    optional picture.</p>
-                                <p>You can add line/paragraph breaks in the text editor by hitting the ENTER key, and they
-                                    will be displayed on the website when you submit.</p>
+                                <p>Then, fill out the author, title, and text of your entry, and attach
+                                    an optional picture.</p>
+                                <p>Are you helping someone submit an entry? You can enter their name as the author instead of your own.</p>
                             </div>
                         </div>
                         <hr />

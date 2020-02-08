@@ -2,10 +2,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: 48px;
 }
 
 #loading {
     text-align: center;
+}
+
+#login-error {
+    padding-top: 1rem;
+    color: darkred;
+    font-size: 1.2rem;
 }
 
 .heading {
