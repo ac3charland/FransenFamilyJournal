@@ -14,7 +14,9 @@ $(document).ready(function() {
     .then(function(response) {
 
         // Write text to DOM
-        $("#title").text(response.title);
+        if (response.title) {
+            $("#title").text(response.title);
+        }
         $("#author").text(response.author);
         $("#body").text(response.body);
         let components = response.timeStamp.split("T")[0].split('-');

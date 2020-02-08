@@ -1,5 +1,7 @@
-$(document).ready(function() {
-    $("#register-submit").submit(function(event) {
+$(document).ready(function () {
+    $("#login-item").attr("hidden", true);
+
+    $("#register-submit").submit(function (event) {
         event.preventDefault()
 
         let email = $("#registerEmail").val();
@@ -23,7 +25,6 @@ $(document).ready(function() {
             if (err) {
                 console.log(err);
             }
-            $("#response").text(JSON.stringify(response));
             // // Clear the previous cookie by setting it it equal to nothing and its expiration date to a past time
             // document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
             // document.cookie = "token=" + response.user.token + "; Secure; HttpOnly";
@@ -31,7 +32,14 @@ $(document).ready(function() {
             location = "/";
         });
     });
-    $("#login-submit").submit(function(event) {
+
+    $("#login-submit").on("input", function (event) {
+        if ($("#login-error").attr("hidden") !== "hidden") {
+            $("#login-error").attr("hidden", true)
+        }
+    })
+
+    $("#login-submit").submit(function (event) {
         event.preventDefault()
 
         let email = $("#loginEmail").val();
@@ -42,15 +50,20 @@ $(document).ready(function() {
                 password: password
             }
         }
-        $.post("/api/users/login", user).then(function(response) {
-            // Clear the previous cookie by setting it it equal to nothing and its expiration date to a past time
-            // document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-            // document.cookie = "token=" + response.user.token + "; Secure; HttpOnly"
-            // console.log("Printing cookies:")
-            // console.log(document.cookie);
-            localStorage.setItem("ffj", response.user.token);
-            location = "/";
-        })
+        $.post("/api/users/login", user)
+            .then(function (response) {
+                // Clear the previous cookie by setting it it equal to nothing and its expiration date to a past time
+                // document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+                // document.cookie = "token=" + response.user.token + "; Secure; HttpOnly"
+                // console.log("Printing cookies:")
+                // console.log(document.cookie);
+                localStorage.setItem("ffj", response.user.token);
+                location = "/";
+            })
+            .catch(function (err) {
+                console.log('There was an error!', err)
+                $("#login-error").attr("hidden", false);
+            })
 
     })
 })

@@ -45,9 +45,11 @@ function createEntryTile(entry) {
     author.text(entry.author);
     entryHtml.append(author);
 
-    let title = $("<h2>");
-    title.text(entry.title);
-    entryHtml.append(title);
+    if (entry.title) {
+        let title = $("<h2>");
+        title.text(entry.title);
+        entryHtml.append(title);
+    }
 
     let components = entry.timeStamp.split("T")[0].split('-');
     let year = parseInt(components[0], 10);

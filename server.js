@@ -27,7 +27,7 @@ app.use(express.static("public"));
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/FransenFamilyJournalDB", { useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/FransenFamilyJournalDB", { useNewUrlParser: true, useUnifiedTopology: true});
 
 
 // index route loads index.html
